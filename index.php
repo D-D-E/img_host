@@ -1,6 +1,6 @@
 <?php
 	$url = "http://$_SERVER[HTTP_HOST]/img_host/";
-	$files = scandir("C:/xampp/htdocs/img_host/img");
+	$files = scandir("/opt/lampp/htdocs/img_host/img");
 	$select = '';
 
 	foreach (array_diff( $files, [".", ".."] ) as $value)

@@ -3,7 +3,7 @@
   $url = "http://$_SERVER[HTTP_HOST]/img_host/"; 
   
   $imgname = $_POST['file'];//'43b3ebb0491111cf0276d3a73098c9b5.png';
-  $filepath = realpath("$url/img/$imgname");
+  $filepath = realpath("/opt/lampp/htdocs/img_host/img/$imgname");
   list($width, $height) = getimagesize("$url/img/$imgname");
   $type = pathinfo("$url/img/$imgname", PATHINFO_EXTENSION);
   $size = filesize($filepath) / 1024;
