@@ -1,6 +1,6 @@
 <?php
  error_reporting(E_ERROR | E_PARSE);
- $url = ""; 
+ $url = "http://$_SERVER[HTTP_HOST]/img_host/"; 
 
  $file = $_FILES['userfile'];
  
