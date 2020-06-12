@@ -40,19 +40,20 @@
 	
 	<form name=\"upload\" id=\"f_upload\" action=\"upload.php\" method=\"POST\" ENCTYPE=\"multipart/form-data\">     
 	<div class=\"title\">Select image to upload</div>
-	<br><div class=\"help_text\">Can paste from clipbord Ctrl + C</div><br>
+	<br><div class=\"help_text\">Can paste from clipbord Ctrl + V</div><br>
 	<input size=\"44\" id=\"i_upload\" type=\"file\" name=\"userfile\" value=\"Select\" accept=\"image/jpeg, image/png, image/gif, image/*\">
 	<br><br><br>
 	<input id=\"s_upload\" class=\"button\" type=\"submit\" name=\"upload\" value=\"UPLOAD\">
 	</form>
 
-	<form name=\"show\" id=\"show\" action=\"show.php?file=file\" method=\"GET\" ENCTYPE=\"multipart/form-data\">     
+	<form name=\"show\" id=\"show\" action=\"show.php\" method=\"GET\" ENCTYPE=\"multipart/form-data\">     
 	<div class=\"title\">Show uploaded image</div>
 	<br><br><br>
 	<select size=\"1\" name=\"file\" id=\"file\">
 		$select
 	</select>
 	<br><br><br>
+	<input name=\"user\" id=\"user\" value=\"$user\" hidden>
 	<input id=\"show\" class=\"button\" type=\"submit\" name=\"show\" value=\"SHOW\">
 	</form>
 	</div>
