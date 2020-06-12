@@ -31,7 +31,7 @@
 	<form name=\"login\" id=\"f_upload\" action=\"login.php\" method=\"POST\" ENCTYPE=\"multipart/form-data\">     
 	<div class=\"title\">Login</div>
 	<div class=\"login_text\">Login:</div>
-	<input type=\"text\" id=\"username\" name=\"username\" size=\"40\">
+	<input type=\"text\" id=\"username\" name=\"username\" value=\"$user\"  size=\"40\">
 	<div class=\"login_text\">Password:</div>
 	<input type=\"password\" id=\"password\" name=\"password\" size=\"40\">
 	<br><br>
