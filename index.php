@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	
+     	error_reporting(E_ERROR | E_WARNING | E_PARSE);	
 	$url = "http://$_SERVER[HTTP_HOST]/img_host/";
 	$root_path = getcwd();
 	
