@@ -1,9 +1,10 @@
 <?php
  session_start();
  error_reporting(E_ERROR | E_PARSE);
- 
+
+  $user = $_SESSION['user'];
   $url = "http://$_SERVER[HTTP_HOST]/img_host/"; 
- 
+
  if (!isset($_SESSION['user'])) {
  echo "
 	<!DOCTYPE html>
@@ -113,8 +114,9 @@
 	";
   exit;
  }
-  
-  $uploaddir = 'img/';
+
+  $root_path = getcwd();
+  $uploaddir = "img/" . $user . "/";
   $uploadfile = $uploaddir . basename($_FILES['userfile']['name']);
   
   $ext = strtolower(pathinfo($uploadfile, PATHINFO_EXTENSION));
@@ -130,8 +132,8 @@
    $md5 = md5_file($uploadfile);
    rename("$uploadfile", "$uploaddir$md5.$ext"); 
 
-     date_default_timezone_set("Asia/Omsk");
-     $time = date("d.m.y");
+     date_default_timezone_set("Europe/Kiev");
+     $time = date("F d Y H:i:s.");
      $filesize = filesize("$uploaddir$md5.$ext");
      $size = (int)($filesize/1024);
      $type = $imageinfo['mime'];
@@ -154,7 +156,7 @@ echo "
 	   <div class=\"result\">
 	    <div class=\"text\">$name</div>
 	    <div class=\"info\">
-	     <div class=\"padding_left\">File name:</div>   <div><a href=\"$url/img/$md5.$ext\" class=\"link\">$md5.$ext</a></div>
+	     <div class=\"padding_left\">File name:</div>   <div><a href=\"$url/img/$user/$md5.$ext\" class=\"link\">$md5.$ext</a></div>
 	     <div class=\"padding_left\">File resolution:</div>     <div><span class=\"bold\">$width px</span> &times; <span class=\"bold\">$height px</span></div>
 	     <div class=\"padding_left\">File type:</div>           <div><span class=\"bold\">$type</span></div>
 	     <div class=\"padding_left\">File size:</div>           <div><span class=\"bold\">$size</span> kb</div>
@@ -163,7 +165,7 @@ echo "
 	    </div>
 	    <div class=\"image\">
     	     <div class=\"popup\">Click on image for a direct link</div>
-	     <a href=\"$url/img/$md5.$ext\" class=\"link\"><img class=\"done\" src=\"$url/img/$md5.$ext\" title=\"$md5.$ext\"></a>
+	     <a href=\"$url/img/$user/$md5.$ext\" class=\"link\"><img class=\"done\" src=\"$url/img/$user/$md5.$ext\" title=\"$md5.$ext\"></a>
 	    </div>
 	   </div>
            <div class=\"back\"><a href=\"$url\" target=\"_self\">back</a></div>
@@ -171,10 +173,7 @@ echo "
 	 </html>
       ";
  exit; 
-} 
-
-
- else {
+} else {
    echo "
 	 <!DOCTYPE html>
 	 <html>
