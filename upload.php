@@ -1,7 +1,36 @@
 <?php
+ session_start();
  error_reporting(E_ERROR | E_PARSE);
- $url = "http://$_SERVER[HTTP_HOST]/img_host/"; 
-
+ 
+  $url = "http://$_SERVER[HTTP_HOST]/img_host/"; 
+ 
+ if (!isset($_SESSION['user'])) {
+ echo "
+	<!DOCTYPE html>
+	 <html>
+	  <head>
+	  <title>Upload result :: fail</title>
+	  <meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />
+          <meta name=\"generator\" content=\"cat /dev/urandom > index.html\" />
+	  <link href=\"css/upload.css\" rel=\"stylesheet\" media=\"all\" />
+	  <link rel=\"icon\" href=\"favicon.png\" type=\"image/x-png\" />
+	 </head>
+	 <body>
+	  <div class=\"error\">
+	   <div class=\"fail\">
+	    Not authorized
+	   </div>
+	   <div class=\"message\">
+	    <br>
+           </div>
+          </div>
+          <div class=\"back\"><a href=\"$url\" target=\"_self\">back</a></div>
+	 </body>
+	</html>
+	";
+   exit;
+}
+ 
  $file = $_FILES['userfile'];
  
  $error_text = true;

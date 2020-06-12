@@ -25,10 +25,10 @@ a:hover {
 }
 
 form {
-		margin-top: 10% !important;
+		margin-top: 1% !important;
 		padding: 30px;
 		width: 360px;
-		height: 140px;
+		height: 160px;
 		margin: auto;
 		border: 1px solid rgba(0,0,0,0.05);
 		background-color: #fff;	
@@ -55,9 +55,31 @@ form {
 		margin: auto;
 }
 
+.login_text {
+		font-family: Comfortaa;
+		font-weight: bold;
+		font-size: 14px;
+		text-align: left;
+		text-shadow: 1px 1px 0 #fff;
+		width: 360px;
+		margin: auto;
+}
+
+.help_text {
+		opacity: 0.5;
+		font-family: Comfortaa;
+		font-weight: bold;
+		font-size: 14px;
+		text-align: left;
+		text-shadow: 1px 1px 0 #fff;
+		width: 360px;
+		margin: auto;
+}
+
 input#upload {
 		width: 100% !important;
 }
+
 
 .button {
 		width: 100%;
