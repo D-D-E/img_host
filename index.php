@@ -14,6 +14,44 @@
 		}
 	}
 
+	$log_form = "";
+	if (!isset($_SESSION['user'])) {
+		$log_form = "
+		<form name=\"login\" id=\"f_upload\" action=\"login.php\" method=\"POST\" ENCTYPE=\"multipart/form-data\">     
+		<div class=\"title\">Login</div>
+		<div class=\"login_text\">Login:</div>
+		<input type=\"text\" id=\"username\" name=\"username\" size=\"40\">
+		<div class=\"login_text\">Password:</div>
+		<input type=\"password\" id=\"password\" name=\"password\" size=\"40\">
+		<br><br>
+		<input id=\"s_upload\" class=\"button\" type=\"submit\" name=\"login\" value=\"LOGIN\">
+		</form>
+		";
+	} else {
+		$log_form = "
+			<div class=\"title\">$user</div>
+			<form name=\"upload\" id=\"f_upload\" action=\"upload.php\" method=\"POST\" ENCTYPE=\"multipart/form-data\">     
+			<div class=\"title\">Select image to upload</div>
+			<br><div class=\"help_text\">Can paste from clipbord Ctrl + V</div><br>
+			<input size=\"44\" id=\"i_upload\" type=\"file\" name=\"userfile\" value=\"Select\" accept=\"image/jpeg, image/png, image/gif, image/*\">
+			<br><br><br>
+			<input id=\"s_upload\" class=\"button\" type=\"submit\" name=\"upload\" value=\"UPLOAD\">
+			</form>
+
+			<form name=\"show\" id=\"show\" action=\"show.php\" method=\"GET\" ENCTYPE=\"multipart/form-data\">     
+			<div class=\"title\">Show uploaded image</div>
+			<br><br><br>
+			<select size=\"1\" name=\"file\" id=\"file\">
+				$select
+			</select>
+			<br><br><br>
+			<input name=\"user\" id=\"user\" value=\"$user\" hidden>
+			<input id=\"show\" class=\"button\" type=\"submit\" name=\"show\" value=\"SHOW\">
+			</form>
+			</div>
+			";	
+	}
+
 	echo "
 	<!DOCTYPE html>
 	<html>
@@ -27,36 +65,9 @@
 	
 	<body>
 	<div class=\"layer\">
+	$log_form	
 	
-	<form name=\"login\" id=\"f_upload\" action=\"login.php\" method=\"POST\" ENCTYPE=\"multipart/form-data\">     
-	<div class=\"title\">Login</div>
-	<div class=\"login_text\">Login:</div>
-	<input type=\"text\" id=\"username\" name=\"username\" value=\"$user\"  size=\"40\">
-	<div class=\"login_text\">Password:</div>
-	<input type=\"password\" id=\"password\" name=\"password\" size=\"40\">
-	<br><br>
-	<input id=\"s_upload\" class=\"button\" type=\"submit\" name=\"login\" value=\"LOGIN\">
-	</form>
-	
-	<form name=\"upload\" id=\"f_upload\" action=\"upload.php\" method=\"POST\" ENCTYPE=\"multipart/form-data\">     
-	<div class=\"title\">Select image to upload</div>
-	<br><div class=\"help_text\">Can paste from clipbord Ctrl + V</div><br>
-	<input size=\"44\" id=\"i_upload\" type=\"file\" name=\"userfile\" value=\"Select\" accept=\"image/jpeg, image/png, image/gif, image/*\">
-	<br><br><br>
-	<input id=\"s_upload\" class=\"button\" type=\"submit\" name=\"upload\" value=\"UPLOAD\">
-	</form>
 
-	<form name=\"show\" id=\"show\" action=\"show.php\" method=\"GET\" ENCTYPE=\"multipart/form-data\">     
-	<div class=\"title\">Show uploaded image</div>
-	<br><br><br>
-	<select size=\"1\" name=\"file\" id=\"file\">
-		$select
-	</select>
-	<br><br><br>
-	<input name=\"user\" id=\"user\" value=\"$user\" hidden>
-	<input id=\"show\" class=\"button\" type=\"submit\" name=\"show\" value=\"SHOW\">
-	</form>
-	</div>
 	
 	<div class=\"footer\">
 	</div>
@@ -64,7 +75,7 @@
 	<script>
 		var file = document.getElementById(\"i_upload\");
 		window.addEventListener('paste', e => {
-				file.files = e.clipboardData.files;
+			file.files = e.clipboardData.files;
 		}, false);
 	</script>
 	
