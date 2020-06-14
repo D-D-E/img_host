@@ -3,7 +3,7 @@
  error_reporting(E_ERROR | E_PARSE);
 
   $user = $_SESSION['user'];
-  $url = "http://$_SERVER[HTTP_HOST]/img_host/"; 
+  $url = "https://$_SERVER[HTTP_HOST]/img_host/"; 
 
  if (!isset($_SESSION['user'])) {
  echo "

@@ -15,8 +15,16 @@ html {
 }
 
 a {
-		color: #000;
+		
+		opacity: 0.5;
+		font-family: Comfortaa;
 		font-weight: bold;
+		font-size: 14px;
+		text-align: center;
+		text-shadow: 1px 1px 0 #fff;
+		width: 360px;
+		margin: auto;	
+		color: #000;
 		text-decoration: none;
 }
 
@@ -74,6 +82,17 @@ form {
 		text-shadow: 1px 1px 0 #fff;
 		width: 360px;
 		margin: auto;
+}
+
+.href_logout {
+		opacity: 0.5;
+		font-family: Comfortaa;
+		font-weight: bold;
+		font-size: 14px;
+		text-align: center;
+		text-shadow: 1px 1px 0 #fff;
+		width: 360px;
+		margin: auto;	
 }
 
 input#upload {

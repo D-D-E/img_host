@@ -1,7 +1,7 @@
 <?php
 	session_start();
      	error_reporting(E_ERROR | E_WARNING | E_PARSE);	
-	$url = "http://$_SERVER[HTTP_HOST]/img_host/";
+	$url = "https://$_SERVER[HTTP_HOST]/img_host/";
 	$root_path = getcwd();
 	
 	$select = '';
@@ -18,7 +18,7 @@
 	if (!isset($_SESSION['user'])) {
 		$log_form = "
 		<form name=\"login\" id=\"f_upload\" action=\"login.php\" method=\"POST\" ENCTYPE=\"multipart/form-data\">     
-		<div class=\"title\">Login</div>
+		<div class=\"title\">Log in</div>
 		<div class=\"login_text\">Login:</div>
 		<input type=\"text\" id=\"username\" name=\"username\" size=\"40\">
 		<div class=\"login_text\">Password:</div>
@@ -30,6 +30,7 @@
 	} else {
 		$log_form = "
 			<div class=\"title\">$user</div>
+			<div class=\"href_logout\"><a href=\"login.php\">log out</a></div>
 			<form name=\"upload\" id=\"f_upload\" action=\"upload.php\" method=\"POST\" ENCTYPE=\"multipart/form-data\">     
 			<div class=\"title\">Select image to upload</div>
 			<br><div class=\"help_text\">Can paste from clipbord Ctrl + V</div><br>
@@ -48,7 +49,6 @@
 			<input name=\"user\" id=\"user\" value=\"$user\" hidden>
 			<input id=\"show\" class=\"button\" type=\"submit\" name=\"show\" value=\"SHOW\">
 			</form>
-			</div>
 			";	
 	}
 
@@ -66,11 +66,9 @@
 	<body>
 	<div class=\"layer\">
 	$log_form	
-	
-
-	
-	<div class=\"footer\">
 	</div>
+	
+	<div class=\"footer\">	</div>
 	
 	<script>
 		var file = document.getElementById(\"i_upload\");

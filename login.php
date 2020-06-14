@@ -20,7 +20,7 @@
 		
       if( $active != NULL) {
          $_SESSION['user'] = $myusername;
-         
+        
 		if (!file_exists("$root_path/img/$myusername")) {
 			mkdir("$root_path/img/$myusername", 0777, true);
 		}
@@ -29,5 +29,10 @@
       }
 	  header("Location: http://$_SERVER[HTTP_HOST]/img_host/");
 	  die();
+   } else {
+         $_SESSION['user'] = NULL;
+         
+   	 header("Location: http://$_SERVER[HTTP_HOST]/img_host/");
+	 die();
    }
 ?>
